@@ -1,0 +1,6 @@
+@import "../../style/variables";
+
+.has-error {
+  border-color: $error-text-color;
+  background-color: $error-bg-color;
+}

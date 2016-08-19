@@ -1,0 +1,26 @@
+@import "../../style/variables";
+
+.menu-icon {
+  display: inline-block;
+  background-color: $form-bg-color;
+  border: 3px solid $form-border-color;
+  border-radius: $radius;
+  cursor: pointer;
+  padding: 20px;
+  min-width: 250px;
+}
+
+.menu-icon.left {
+  margin-right: 30px;
+}
+
+.menu-logo {
+  min-width: 160px;
+  max-width: 200px;
+  height: 160px;
+}
+
+.menu-text {
+  font-size: 2em;
+  font-weight: bold;
+}

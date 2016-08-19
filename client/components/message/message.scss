@@ -1,0 +1,29 @@
+@import "../../style/variables";
+
+$height: 40px;
+$width: $height;
+
+.message-container {
+  margin-top: 20px;
+  height: $height;
+
+  .result-icon {
+    width: $width;
+    height: $height;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .message {
+    font-size: $height/2;
+  }
+  .text-error {
+    color: $error-text-color
+  }
+  .text-success {
+    color: $success-text-color
+  }
+  .text-warning {
+    color: $warning-text-color
+  }
+}
