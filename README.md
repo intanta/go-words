@@ -1,4 +1,4 @@
-# [react-redux-starter-kit](https://github.com/cloudmu/react-redux-starter-kit)
+# [GoWords](https://github.com/intanta/go-words)
 
 GoWords - application for learning english words
 
