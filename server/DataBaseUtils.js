@@ -12,7 +12,7 @@ const databaseUri = process.env.MONGOLAB_URI ||
 
 export function setUpConnection() {
     mongoose.connect(databaseUri, (err, res) => {
-      if (err) { console.log ('ERROR connecting to: ' + uristring + '. ' + err); }
+      if (err) { console.log ('ERROR connecting to: ' + databaseUri + '. ' + err); }
     });
 }
 
