@@ -6,8 +6,14 @@ import { Word } from './models/Word';
 
 //const Word = mongoose.model('Word');
 
+const databaseUri = process.env.MONGOLAB_URI ||
+                    process.env.MONGOHQ_URL ||
+                    `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
+
 export function setUpConnection() {
-    mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
+    mongoose.connect(databaseUri, (err, res) => {
+      if (err) { console.log ('ERROR connecting to: ' + uristring + '. ' + err); }
+    });
 }
 
 export function listWords(id) {
