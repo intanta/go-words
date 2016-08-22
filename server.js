@@ -1,7 +1,8 @@
+/*
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-
+*/
 import express from 'express';
 import path from 'path';
 import http from 'http';
@@ -20,6 +21,7 @@ const app = express();
 
 
 // Webpack dev server
+/*
 if (isDeveloping) {
   const WEBPACK_PORT = 3001;
   const compiler = webpack(webpackConfig);
@@ -41,6 +43,7 @@ if (isDeveloping) {
     console.log('WebpackDevServer listening at localhost:'+WEBPACK_PORT);
   });
 }
+*/
 
 db.setUpConnection();
 
