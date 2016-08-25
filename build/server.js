@@ -82,6 +82,7 @@ app.get('/', function (request, response) {
 });
 
 app.get('/words', function (req, res) {
+  console.log('got to server side');
   if (connected) {
     db.listWords().then(function (data) {
       if (data.length !== 0) {
@@ -98,6 +99,7 @@ app.get('/words', function (req, res) {
 });
 
 app.post('/words', function (req, res) {
+  console.log('got to server side');
   if (connected) {
     db.addWord(req.body).then(function (data) {
       return res.send(data);

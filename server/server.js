@@ -60,6 +60,7 @@ app.get('/', function (request, response){
 })
 
 app.get('/words', function(req, res) {
+  console.log('got to server side');
   if (connected) {
     db.listWords()
       .then(data => {
@@ -77,6 +78,7 @@ app.get('/words', function(req, res) {
 });
 
 app.post('/words', function(req, res) {
+  console.log('got to server side');
   if (connected) {
     db.addWord(req.body)
       .then(data => res.send(data))
