@@ -8,11 +8,11 @@ import path from 'path';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import webpackConfig from './webpack.config';
+import webpackConfig from '../webpack.config';
 
-import { serverPort } from './etc/config.json';
+import { serverPort } from '../etc/config.json';
 
-import * as db from './server/DataBaseUtils';
+import * as db from './DataBaseUtils';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDeveloping = !isProduction;
@@ -45,9 +45,10 @@ if (isDeveloping) {
 }
 */
 
-db.setUpConnection();
+const connected = db.setUpConnection();
 
 const publicPath = path.resolve(__dirname);
+console.log(publicPath);
 app.use(bodyParser.json({ type: 'application/json' }))
 app.use(express.static(publicPath));
 app.use(cors({ origin: '*' }));
@@ -59,6 +60,7 @@ app.get('/', function (request, response){
 })
 
 app.get('/words', function(req, res) {
+  if (connected) {
     db.listWords()
       .then(data => {
         if (data.length !== 0) {
@@ -67,13 +69,21 @@ app.get('/words', function(req, res) {
           res.status(204).send({ error: 'No data available in the database'});
         }
       })
-      .catch(error => res.status(500).send({ error: 'Unable to request data from database!'}));
+      .catch(error => res.status(500).send());
+  } else {
+    res.status(503).send();
+  }
+
 });
 
 app.post('/words', function(req, res) {
+  if (connected) {
     db.addWord(req.body)
       .then(data => res.send(data))
-      .catch(error => res.status(500).send({ error: 'Unable to add new record to the database!'}));
+      .catch(error => res.status(500).send());
+  } else  {
+    res.status(503).send();
+  }
 });
 
 // We need to use basic HTTP service to proxy

@@ -6,14 +6,14 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'source-map',
   entry: [
-    'babel-polyfill',
+    //'babel-polyfill',
     'webpack-hot-middleware/client?reload=true',
     './client/index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: '/dist'
+    publicPath: ''
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -33,7 +33,7 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
         query: {
-          plugins: ['transform-runtime'],
+          //plugins: ['transform-runtime'],
           presets: ['es2015', 'stage-0', 'react'],
         }
       },

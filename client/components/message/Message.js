@@ -1,19 +1,22 @@
 import React, { PropTypes } from 'react';
+import successIcon from '../../images/success-icon.png';
+import errorIcon from '../../images/error-icon.png';
+import warningIcon from '../../images/warning-icon.png';
 
 import './message.scss';
 
 const TYPES = {
   success : {
     style: 'message text-success',
-    iconUrl: '../../client/images/success-icon.png'
+    iconUrl: successIcon
   },
   error : {
     style: 'message text-error',
-    iconUrl: '../../client/images/error-icon.png'
+    iconUrl: errorIcon
   },
   warning : {
     style: 'message text-warning',
-    iconUrl: '../../client/images/warning-icon.png'
+    iconUrl: warningIcon
   }
 }
 

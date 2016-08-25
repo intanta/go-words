@@ -34,7 +34,7 @@ export function fetchWords() {
         }
       })
       .catch((error) => {
-        dispatch(addError(error));
+        dispatch(addError(error.message));
         dispatch(stopFetching());
       })
   }
