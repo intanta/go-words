@@ -8,7 +8,7 @@ import path from 'path';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import webpackConfig from '../webpack.config';
+//import webpackConfig from '../webpack.config';
 
 import { serverPort } from '../etc/config.json';
 
