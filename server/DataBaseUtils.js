@@ -11,6 +11,8 @@ const databaseUri = process.env.MONGOLAB_URI ||
                     `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
 
 export function setUpConnection() {
+  console.log(process.env.MONGOLAB_URI);
+  console.log(databaseUri);
     mongoose.connect(databaseUri, (err, res) => {
       if (err) {
         console.log ('ERROR connecting to: ' + databaseUri + '. ' + err);

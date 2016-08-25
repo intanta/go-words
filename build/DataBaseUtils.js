@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.setUpConnection = setUpConnection;
 exports.listWords = listWords;
@@ -24,26 +24,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var databaseUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://' + _config2.default.db.host + ':' + _config2.default.db.port + '/' + _config2.default.db.name;
 
 function setUpConnection() {
-    _mongoose2.default.connect(databaseUri, function (err, res) {
-        if (err) {
-            console.log('ERROR connecting to: ' + databaseUri + '. ' + err);
-            return false;
-        }
-        return true;
-    });
+  console.log(process.env.MONGOLAB_URI);
+  console.log(databaseUri);
+  _mongoose2.default.connect(databaseUri, function (err, res) {
+    if (err) {
+      console.log('ERROR connecting to: ' + databaseUri + '. ' + err);
+      return false;
+    }
+    return true;
+  });
 }
 
 function listWords(id) {
-    return _Word.Word.find();
+  return _Word.Word.find();
 }
 
 function addWord(data) {
-    console.log(data);
-    var word = new _Word.Word({
-        eng: data.eng,
-        rus: data.rus
-    });
-    console.log(word);
-    return word.save();
+  console.log(data);
+  var word = new _Word.Word({
+    eng: data.eng,
+    rus: data.rus
+  });
+  console.log(word);
+  return word.save();
 }
 //# sourceMappingURL=DataBaseUtils.js.map
