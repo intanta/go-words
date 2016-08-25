@@ -46,6 +46,7 @@ if (isDeveloping) {
 */
 
 const connected = db.setUpConnection();
+console.log(connected);
 
 const publicPath = path.resolve(__dirname);
 console.log(publicPath);
@@ -61,6 +62,7 @@ app.get('/', function (request, response){
 
 app.get('/words', function(req, res) {
   console.log('got to server side');
+  console.log(connected);
   if (connected) {
     db.listWords()
       .then(data => {
