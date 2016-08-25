@@ -45,8 +45,7 @@ if (isDeveloping) {
 }
 */
 
-const connected = db.setUpConnection();
-console.log(connected);
+db.setUpConnection();
 
 const publicPath = path.resolve(__dirname);
 console.log(publicPath);
@@ -62,8 +61,8 @@ app.get('/', function (request, response){
 
 app.get('/words', function(req, res) {
   console.log('got to server side');
-  console.log(connected);
-  if (connected) {
+
+  if (db.isConnected()) {
     db.listWords()
       .then(data => {
         if (data.length !== 0) {
@@ -81,7 +80,7 @@ app.get('/words', function(req, res) {
 
 app.post('/words', function(req, res) {
   console.log('got to server side');
-  if (connected) {
+  if (db.isConnected()) {
     db.addWord(req.body)
       .then(data => res.send(data))
       .catch(error => res.status(500).send());

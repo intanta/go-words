@@ -67,8 +67,7 @@ if (isDeveloping) {
 }
 */
 
-var connected = db.setUpConnection();
-console.log(connected);
+db.setUpConnection();
 
 var publicPath = _path2.default.resolve(__dirname);
 console.log(publicPath);
@@ -84,8 +83,8 @@ app.get('/', function (request, response) {
 
 app.get('/words', function (req, res) {
   console.log('got to server side');
-  console.log(connected);
-  if (connected) {
+
+  if (db.isConnected()) {
     db.listWords().then(function (data) {
       if (data.length !== 0) {
         res.send(data);
@@ -102,7 +101,7 @@ app.get('/words', function (req, res) {
 
 app.post('/words', function (req, res) {
   console.log('got to server side');
-  if (connected) {
+  if (db.isConnected()) {
     db.addWord(req.body).then(function (data) {
       return res.send(data);
     }).catch(function (error) {

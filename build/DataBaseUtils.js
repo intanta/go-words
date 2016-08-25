@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.setUpConnection = setUpConnection;
+exports.isConnected = isConnected;
 exports.listWords = listWords;
 exports.addWord = addWord;
 
@@ -29,10 +30,13 @@ function setUpConnection() {
   _mongoose2.default.connect(databaseUri, function (err, res) {
     if (err) {
       console.log('ERROR connecting to: ' + databaseUri + '. ' + err);
-      return false;
     }
-    return true;
   });
+}
+
+function isConnected() {
+  console.log('readyState ', _mongoose2.default.connection.readyState);
+  return _mongoose2.default.connection.readyState === 1 ? true : false;
 }
 
 function listWords(id) {

@@ -16,10 +16,13 @@ export function setUpConnection() {
     mongoose.connect(databaseUri, (err, res) => {
       if (err) {
         console.log ('ERROR connecting to: ' + databaseUri + '. ' + err);
-        return false;
       }
-      return true;
     });
+}
+
+export function isConnected() {
+  console.log('readyState ', mongoose.connection.readyState);
+  return mongoose.connection.readyState === 1 ? true : false;
 }
 
 export function listWords(id) {
