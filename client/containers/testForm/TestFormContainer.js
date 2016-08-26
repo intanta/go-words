@@ -57,9 +57,11 @@ class TestFormContainer extends React.Component {
   }
 
   renderNextBtn = () => {
-    return <button className='btn-common next-btn'
-      onClick={this.handleNext}
-    >Next</button>
+    return <div className="next-container">
+      <button className='btn-common next-btn'
+        onClick={this.handleNext}
+      >Next</button>
+    </div>
   }
 
   checkTranslation = answer => {

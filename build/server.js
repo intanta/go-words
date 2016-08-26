@@ -82,14 +82,12 @@ app.get('/', function (request, response) {
 });
 
 app.get('/words', function (req, res) {
-  console.log('got to server side');
-
   if (db.isConnected()) {
     db.listWords().then(function (data) {
       if (data.length !== 0) {
         res.send(data);
       } else {
-        res.status(204).send({ error: 'No data available in the database' });
+        res.status(204).send();
       }
     }).catch(function (error) {
       return res.status(500).send();
@@ -100,7 +98,6 @@ app.get('/words', function (req, res) {
 });
 
 app.post('/words', function (req, res) {
-  console.log('got to server side');
   if (db.isConnected()) {
     db.addWord(req.body).then(function (data) {
       return res.send(data);

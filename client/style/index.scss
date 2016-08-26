@@ -1,4 +1,5 @@
 @import './variables';
+@import './mixins';
 
 body {
   font-family: $primary-font-stack;
@@ -18,6 +19,8 @@ body {
   border-radius: $radius;
   position: relative;
   text-align: center;
+  @include respond-to(handhelds) { width: 100% ;}
+  @include respond-to(medium-screens) { width: 70%; }
   .form-content {
     width: 60%;
     margin: 0 auto;
