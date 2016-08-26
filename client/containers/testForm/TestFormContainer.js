@@ -18,6 +18,7 @@ class TestFormContainer extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      words: null,
       currentWord: 0,
       score: 0,
       showNext: false,
@@ -35,18 +36,35 @@ class TestFormContainer extends React.Component {
     if (newProps.error) {
       this.context.router.push('oops');
     } else {
-      if (newProps.data && newProps.data.length === 0) {
-        this.context.router.push('oops');
+      if (newProps.data) {
+        if (newProps.data.length > 0) {
+          this.setState({words: this.shuffle(newProps.data)});
+        } else {
+          this.context.router.push('oops');
+        }
       }
     }
   }
 
   componentWillUnmount () {
-    if (!this.props.data) { return; }
-    if (this.state.currentWord !== this.props.data.length - 1){
+    if (!this.state.words) { return; }
+    if (this.state.currentWord !== this.state.words.length - 1){
       this.props.actions.resetTotal();
       this.props.actions.resetScore();
     }
+  }
+
+  shuffle(array) {
+    let counter = array.length;
+    while (counter > 0) {
+        let index = Math.floor(Math.random() * counter);
+        counter--;
+
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+    return array;
   }
 
   formMessage = (type, message) => {
@@ -65,7 +83,7 @@ class TestFormContainer extends React.Component {
   }
 
   checkTranslation = answer => {
-    const engWord = this.props.data[this.state.currentWord].eng;
+    const engWord = this.state.words[this.state.currentWord].eng;
     if (answer === engWord) {
       this.message = this.formMessage('success', 'You are right! Good job!');
       this.props.actions.incrementScore();
@@ -79,8 +97,6 @@ class TestFormContainer extends React.Component {
 
   handleCheck = answer => {
     const validationResult = Validator.validate(answer,'isEnglish');
-    console.log(validationResult.result === false);
-    console.log(validationResult.result === true);
     if (validationResult.result === false) {
       this.message = this.formMessage('warning', 'Spelling is incorrect! Please, check once more!');
       this.setState({showMsg: true});
@@ -91,7 +107,7 @@ class TestFormContainer extends React.Component {
 
   handleNext = () => {
     this.props.actions.incrementTotal();
-    if (this.state.currentWord < this.props.data.length - 1){
+    if (this.state.currentWord < this.state.words.length - 1){
       this.setState({
         currentWord: this.state.currentWord + 1,
         score: this.state.score + 1,
@@ -104,13 +120,13 @@ class TestFormContainer extends React.Component {
   }
 
   render () {
-    const { isLoading, data } = this.props;
-    const wordForCheck = data ? data[this.state.currentWord].rus : '';
+    const words = this.state.words;
+    const wordForCheck = words ? words[this.state.currentWord].rus : '';
     return (
-      <Loader loaded={!isLoading}>
+      <Loader loaded={!this.props.isLoading}>
         <div className="form-block form-relative">
           <BackToMainComponent />
-          <h3>{this.state.currentWord + 1} of {data ? data.length : ''}</h3>
+          <h3>{this.state.currentWord + 1} of {words ? words.length : ''}</h3>
           <TestForm
             onCheck={this.handleCheck}
             onNext={this.handleNext}
