@@ -13,11 +13,11 @@ const Validator = {
       message: 'This field must be in e-mail format'
     },
     isEnglish: {
-      validate: value => !/[a-zA-Z]+/.test(value),
+      validate: value => !/^[a-zA-Z ]+$/.test(value),
       message: 'This field must contain only latin letters'
     },
     isRussian: {
-      validate: value => !/[а-яА-Я]+/.test(value),
+      validate: value => !/^[а-яА-Я ]+$/.test(value),
       message: 'This field must contain only russian letters'
     }
   },

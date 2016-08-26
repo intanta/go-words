@@ -79,7 +79,9 @@ class TestFormContainer extends React.Component {
 
   handleCheck = answer => {
     const validationResult = Validator.validate(answer,'isEnglish');
-    if (!validationResult.result) {
+    console.log(validationResult.result === false);
+    console.log(validationResult.result === true);
+    if (validationResult.result === false) {
       this.message = this.formMessage('warning', 'Spelling is incorrect! Please, check once more!');
       this.setState({showMsg: true});
     } else {

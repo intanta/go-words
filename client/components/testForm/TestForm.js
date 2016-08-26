@@ -14,6 +14,7 @@ export default class TestForm extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.wordForCheck !== this.props.wordForCheck){
       DOMHelper.makeBlank('answer');
+      this.setState({answer: ''});
     }
   }
 
