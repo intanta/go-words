@@ -33,9 +33,11 @@ export default class TestForm extends React.Component {
       <div className="text-center">
         <h2>Please, translate the following word... </h2>
         <h1>{this.props.wordForCheck}</h1>
-        <form className="form-content" onSubmit={this.handleSubmit} onChange={this.handleFieldChanged}>
+        <form className="form-content"
+              onSubmit={this.handleSubmit} onChange={this.handleFieldChanged}
+              >
           <div className="form-control-group">
-            <input type='text' id='answer' className='text-control' />
+            <input type='text' id='answer' className='text-control' autoComplete="off"/>
           </div>
           <button type='submit' className='btn-common btn-success'>Check</button>
         </form>

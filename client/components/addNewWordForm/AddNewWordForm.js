@@ -77,6 +77,8 @@ export default class AddNewWordForm extends React.Component {
                 className='text-control'
                 onFocus={this.handleFocus}
                 onChange={this.handleFieldChanged}
+                autoComplete="off"
+                name={tagId}
         />
       </div>
     )
@@ -86,7 +88,7 @@ export default class AddNewWordForm extends React.Component {
     return (
       <Wrapper>
         <h1>What new word have you learned?</h1>
-        <form className="form-content" onSubmit={this.handleSubmit}>
+        <form className="form-content" onSubmit={this.handleSubmit} autoComplete="off">
           {this.engWordField}
           {this.rusWordField}
           <button type='submit' className='btn-common btn-success'>Save to vocabulary</button>
