@@ -7,13 +7,17 @@ import './homePage.scss';
 const HomePage = ({onAdd, onTest}) => {
   return (
     <div className='text-center'>
-      <div className="menu-icon left" onClick={onAdd}>
-        <img src={addLogo} className="menu-logo"/>
-        <p className="menu-text">Add new words!</p>
+      <div className="menu-icon-container left" onClick={onAdd}>
+        <div className="menu-icon">
+          <img src={addLogo} className="menu-logo"/>
+          <p className="menu-text">Add new words!</p>
+        </div>
       </div>
-      <div className="menu-icon" onClick={onTest}>
-        <img src={testLogo} className="menu-logo"/>
-        <p className="menu-text">Test yourself!</p>
+      <div className="menu-icon-container" onClick={onTest}>
+        <div className="menu-icon">
+          <img src={testLogo} className="menu-logo"/>
+          <p className="menu-text">Test yourself!</p>
+        </div>
       </div>
     </div>
   );

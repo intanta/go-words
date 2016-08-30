@@ -44,15 +44,17 @@ module.exports = {
       {
         test: /\.css?$/,
         loaders: ['style', 'raw'],
-        include: __dirname
+        include: path.join(__dirname, 'client')
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loaders: ['style', 'css', 'sass'],
+        include: path.join(__dirname, 'client')
       },
       { test: /\.(jpe?g|png|gif|svg)$/,
         loader: 'url',
-        query: {limit: 10240}
+        query: {limit: 10240},
+        include: path.join(__dirname, 'client')
       }
     ]
   }

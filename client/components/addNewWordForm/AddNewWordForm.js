@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Validator from '../../utils/Validator';
 import DOMHelper from '../../utils/DOMHelper';
 import Message from '../../components/message/Message';
-import BackToMainComponent from '../../components/backToMain/BackToMainComponent';
+import Wrapper from '../../components/wrapper/Wrapper';
 
 import './addNewWordForm.scss';
 
@@ -84,8 +84,7 @@ export default class AddNewWordForm extends React.Component {
 
   render () {
     return (
-      <div className="form-block text-center">
-        <BackToMainComponent />
+      <Wrapper>
         <h1>What new word have you learned?</h1>
         <form className="form-content" onSubmit={this.handleSubmit}>
           {this.engWordField}
@@ -93,7 +92,7 @@ export default class AddNewWordForm extends React.Component {
           <button type='submit' className='btn-common btn-success'>Save to vocabulary</button>
           {this.state.showMsg ? this.message : null}
         </form>
-      </div>
+      </Wrapper>
     )
   }
 }

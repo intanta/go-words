@@ -1,19 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 
 import Message from '../../components/message/Message';
+import Wrapper from '../../components/wrapper/Wrapper';
 
 class OopsContainer extends React.Component {
   render () {
     return (
-      <div className="form-block text-center">
+      <Wrapper>
         <Message
           msgType='warning'
           msgText={this.props.error || ''}
         />
-        <Link to='/'>Back to Main</Link>
-      </div>
+      </Wrapper>
     )
   }
 }

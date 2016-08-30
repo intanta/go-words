@@ -6,7 +6,7 @@ import './app.css';
 
 function App ({ children }) {
   return (
-    <div className="container-fluid">
+    <div>
       <Header />
       <div className="appContent">
         {children}

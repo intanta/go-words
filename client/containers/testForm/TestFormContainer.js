@@ -8,7 +8,7 @@ import { fetchWords } from '../../actions/words';
 import Loader from 'react-loader';
 import TestForm from '../../components/testForm/TestForm';
 import Message from '../../components/message/Message';
-import BackToMainComponent from '../../components/backToMain/BackToMainComponent';
+import Wrapper from '../../components/wrapper/Wrapper';
 
 import Validator from '../../utils/Validator';
 
@@ -124,8 +124,7 @@ class TestFormContainer extends React.Component {
     const wordForCheck = words ? words[this.state.currentWord].rus : '';
     return (
       <Loader loaded={!this.props.isLoading}>
-        <div className="form-block form-relative">
-          <BackToMainComponent />
+        <Wrapper>
           <h3>{this.state.currentWord + 1} of {words ? words.length : ''}</h3>
           <TestForm
             onCheck={this.handleCheck}
@@ -134,7 +133,7 @@ class TestFormContainer extends React.Component {
           />
           {this.state.showMsg ? this.message : null}
           {this.state.showNext ? this.nextBtn : null}
-        </div>
+        </Wrapper>
       </Loader>
     )
   }

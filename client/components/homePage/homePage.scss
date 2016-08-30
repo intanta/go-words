@@ -1,7 +1,7 @@
 @import "../../style/variables";
 @import '../../style/mixins';
 
-.menu-icon {
+.menu-icon-container {
   display: inline-block;
   background-color: $form-bg-color;
   border: 3px solid $form-border-color;
@@ -16,7 +16,7 @@
   }
 }
 
-.menu-icon.left {
+.menu-icon-container.left {
   margin-right: 30px;
   @include respond-to(handhelds) {
     margin-right: auto;
@@ -33,4 +33,5 @@
 .menu-text {
   font-size: 2em;
   font-weight: bold;
+  margin-bottom: 0;
 }
