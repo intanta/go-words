@@ -62,8 +62,8 @@ export default class AddNewWordForm extends React.Component {
       return;
     }
     let wordPair = {
-      eng: engWord,
-      rus: rusWord
+      eng: engWord.toLowerCase(),
+      rus: rusWord.toLowerCase()
     };
     this.resetFields();
     this.props.onSave(wordPair);

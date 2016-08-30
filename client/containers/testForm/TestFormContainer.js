@@ -84,7 +84,7 @@ class TestFormContainer extends React.Component {
 
   checkTranslation = answer => {
     const engWord = this.state.words[this.state.currentWord].eng;
-    if (answer === engWord) {
+    if (answer.toLowerCase() === engWord) {
       this.message = this.formMessage('success', 'You are right! Good job!');
       this.props.actions.incrementScore();
     } else {
